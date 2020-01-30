@@ -60,6 +60,8 @@ Things you may want to cover:
 ### Association
 - has_many :users through: :groups_users
 - has_many :messages
+- has_many :groups_users
+
 
 
 ## groups_usersテーブル
