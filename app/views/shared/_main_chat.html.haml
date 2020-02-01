@@ -1,0 +1,43 @@
+.main--chat
+  .chat--header
+    .chat--header__left
+      .chat--header__left--group
+        うさぎ
+      .chat--header__left--message
+        member:junjun
+    .chat--header__right
+      = link_to "#", class: "chat--header__right--box" do
+        Edit
+  .chat--contents
+    .chat--content
+      .chat--content__user--name
+        junjun
+      .chat--content__date
+        2020/01/31
+    .chat--content__message
+      うさぎうさぎ
+    .chat--content
+      .chat--content__user--name
+        junjun
+      .chat--content__date
+        2020/01/31
+    .chat--content__message
+      うさぎうさぎ
+    .chat--content
+      .chat--content__user--name
+        junjun
+      .chat--content__date
+        2020/01/31
+    .chat--content__message
+      うさぎうさぎ  
+  .form
+    .form__input--field
+      %input.form__input--field__text{placeholder: "type a message"}
+      .form__input--field__image
+        %label{class: "image--icon"}
+          = icon('fas', 'image')
+          %input{type: "file", class:"image--icon--file"}
+
+    = link_to "#", class: "form--btn" do
+      Send
+    
