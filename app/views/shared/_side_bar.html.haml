@@ -1,0 +1,18 @@
+.sidebar
+  .sidebar__header
+    .sidebar__header--box
+      .sidebar__header--box--left
+        %p junjun
+      .sidebar__header--box--right
+        = link_to "#", class: "sidebar__header--box--right--btn" do
+          = icon('fas', 'edit')
+          %span<>
+        = link_to "#", class: "sidebar__header--box--right--btn" do
+          = icon('fas', 'cog')
+          %span<>
+  .sidebar__grouplist
+    .sidebar__grouplist--box
+      .sidebar__grouplist--box__groupname
+        うさぎ
+      .sidebar__grouplist--box__message
+        なんやかんや
