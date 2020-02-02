@@ -47,15 +47,16 @@ $btn_color: #38aef0;
       height: $main_height;
       background-color: #2f3e51;
       &--box{
-
-        color: #fff;
-        font-weight: bold;
         padding: 20px 20px 40px;
         &__groupname{
+          color: #fff;
+          font-weight: bold;  
           font-size: 15px;
           padding-bottom: 5px;
         }
         &__message{
+          color: #fff;
+          font-weight: bold;  
           font-size: 11px;
         }
     }
