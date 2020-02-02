@@ -4,15 +4,17 @@
       .sidebar__header--box--left
         = current_user.name
       .sidebar__header--box--right
-        = link_to "#", class: "sidebar__header--box--right--btn" do
+        = link_to new_group_path, class: "sidebar__header--box--right--btn" do
           = icon('fas', 'edit')
           %span<>
         = link_to edit_user_path(current_user),  class: "sidebar__header--box--right--btn" do
           = icon('fas', 'cog')
           %span<>
   .sidebar__grouplist
-    .sidebar__grouplist--box
-      .sidebar__grouplist--box__groupname
-        うさぎ
-      .sidebar__grouplist--box__message
-        なんやかんや
+    - current_user.groups.each do |group|
+      .sidebar__grouplist--box
+        = link_to '#' do
+          .sidebar__grouplist--box__groupname
+            = group.name
+          .sidebar__grouplist--box__message
+            なんやかんや
