@@ -13,8 +13,8 @@
   .sidebar__grouplist
     - current_user.groups.each do |group|
       .sidebar__grouplist--box
-        = link_to '#' do
+        = link_to group_messages_path(group) do
           .sidebar__grouplist--box__groupname
             = group.name
           .sidebar__grouplist--box__message
-            なんやかんや
+            = group.show_last_message
