@@ -77,19 +77,21 @@ $btn_color: #38aef0;
     display: flex;
     justify-content: space-between;
     &__left{
+      margin: 28px 0;
       padding-left: 40px;
-      &--group{
-        color: #333333;
-        font-size: 20px;
-        padding: 35px 0 15px;
+      line-height: center;
+    &left--group{
+      color: #333333;
+      font-size: 20px;
+      padding: 35px 0 15px;
+      display: block;
       }
       &--message{
         color: #999999;
         font-size: 12px;
-        display: block;
+        display: inline-block;
         &--member{
-          display: block;
-          float: left;
+          display: inline-block;
           padding-right: 8px;
           color: #999999;
           font-size: 12px;
@@ -99,10 +101,11 @@ $btn_color: #38aef0;
     &__right{
       border: 1px solid $btn_color;
       margin: 28px 40px;
-      padding: 0 20px;
       width: 72px;
       height: 40px;
+      display: block;
       &--box{
+        padding: 0 20px;
         display: block;
         line-height: 40px;
         text-decoration: none;
