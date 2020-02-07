@@ -116,21 +116,25 @@ $btn_color: #38aef0;
     height: calc(#{$main_height} - 90px);
     padding: 35px 40px;
     .chat--content{
-      display: flex;
-      &__user--name{
-        font-size: 16px;
-        color: #333333;
-        padding-right: 10px;
-        margin-bottom: 12px;
-      }
-      &__date{
-        font-size: 12px;
-        color: #999999;
+      margin-bottom: 60px;
+      &--top{
+        display: flex;
+        &__user--name{
+          font-weight: bold;
+          font-size: 18px;
+          color: #333333;
+          padding-right: 10px;
+          margin-bottom: 12px;
+        }
+          &__date{
+            font-size: 12px;
+            color: #999999;
+          }
+        
       }
       &__message{
         color: #434A54;
         font-size: 14px;
-        margin-bottom: 46px;
       }
     }
     

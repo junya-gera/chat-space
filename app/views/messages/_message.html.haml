@@ -1,14 +1,13 @@
-.chat--content
-    .chat--content__user--name
-        = message.user.name
-    .chat--content__date
-        = message.created_at
-.chat--content__message
-    - if message.content.present?
-        %p.message__content
-        = message.content
-    = image_tag message.image.url if message.image.present?
-
+.chat--content{data: {message: {id: message.id}}}
+    .chat--content--top
+        .chat--content--top__user--name
+            = message.user.name
+        .chat--content--top__date
+            = message.created_at
+    .chat--content__message
+        - if message.content.present?
+            = message.content
+        = image_tag message.image.url if message.image.present?
 
 
 -# .chat--content
