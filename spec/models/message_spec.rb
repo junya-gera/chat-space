@@ -57,7 +57,10 @@ RSpec.describe Message, type: :model do
     context 'ログインしている場合' do
       # beforeメソッドは、各exampleが実行される直前に、毎回実行される。ここに共通の処理をまとめておく
       before do
-        login user
+        # ここのloginメソッドはmacrosで定義したもの
+        login user  
+        # 擬似的にindexアクションを動かすリクエストを行うためにgetメソッドを使用
+        # messagesはgroupsにネストしているので、group_idが必要。getメソッドの引数にparams以下を渡している
         get :index, params: { group_id: group.id }
       end
     end
