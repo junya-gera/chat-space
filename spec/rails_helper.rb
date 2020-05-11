@@ -40,7 +40,8 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
-  config.include FactoryBot::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods  # spec.rbにて呼び出すためのFactoryBotの記述がいらなくなる
+  
   Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include ControllerMacros, type: :controller

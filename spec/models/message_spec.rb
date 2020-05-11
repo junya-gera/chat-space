@@ -4,7 +4,9 @@ RSpec.describe Message, type: :model do
   describe '#create' do
     context 'messageを保存できる場合' do  # contextで特定の条件でテストのグループ分けができる
       it 'is valid with content' do
-        expect(build(:message, image: nil)).to be_valid
+        #be_validマッチャ→expectの引数にしたインスタンスが全てのバリデーションをクリアしたらパス
+        #build()でFactoryBotで作成したインスタンスを呼んでくる
+        expect(build(:message, image: nil)).to be_valid 
       end
 
       it 'is valid with image' do
@@ -19,6 +21,7 @@ RSpec.describe Message, type: :model do
     context 'messageが保存できない場合' do
       it 'is invalid without content and image' do
         message = build(:message, content: nil, image: nil)
+        # valid?メソッドで保存できるかチェック＋errorsメソッドでエラー文を呼び出しエラーの原因を表示する
         message.valid?
         expect(message.errors[:content]).to include("を入力してください")
       end
