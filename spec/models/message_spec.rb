@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Message, type: :model do
   describe '#create' do
-    context 'can save' do
+    context 'messageを保存できる場合' do  # contextで特定の条件でテストのグループ分けができる
       it 'is valid with content' do
         expect(build(:message, image: nil)).to be_valid
       end
@@ -16,7 +16,7 @@ RSpec.describe Message, type: :model do
       end
     end
 
-    context 'can not save' do
+    context 'messageが保存できない場合' do
       it 'is invalid without content and image' do
         message = build(:message, content: nil, image: nil)
         message.valid?
