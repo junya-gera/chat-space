@@ -47,6 +47,13 @@ RSpec.describe Message, type: :model do
         # 該当するビューが描画されているか
       # ログインしていない場合
         # 意図したビューにリダイレクトしているか
+
+    # 複数のexample内で同一のインスタンスを使用したい場合、letメソッドを使う
+    # letメソッドは初回の呼び出し時のみ実行される（遅延評価）。繰り返しがないので高速
+    # 
+    let(:group) { create(:group) }
+    let(:user) { create(:user) }
+
     context 'ログインしている場合' do
     end
 
