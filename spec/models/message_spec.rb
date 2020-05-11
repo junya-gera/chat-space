@@ -55,9 +55,17 @@ RSpec.describe Message, type: :model do
     let(:user) { create(:user) }
 
     context 'ログインしている場合' do
+      # beforeメソッドは、各exampleが実行される直前に、毎回実行される。ここに共通の処理をまとめておく
+      before do
+        login user
+        get :index, params: { group_id: group.id }
+      end
     end
 
     context 'ログインしていない場合' do
+      before do
+        get :index, params: { group_id: group.id }
+      end
     end
 
   end
