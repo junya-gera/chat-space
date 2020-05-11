@@ -39,4 +39,19 @@ RSpec.describe Message, type: :model do
       end
     end
   end
+
+  describe '#index' do
+    # メッセージ一覧でテストすべき点
+      # ログインしている場合
+        # アクション内で定義しているインスタンス変数があるか
+        # 該当するビューが描画されているか
+      # ログインしていない場合
+        # 意図したビューにリダイレクトしているか
+    context 'ログインしている場合' do
+    end
+
+    context 'ログインしていない場合' do
+    end
+
+  end
 end
