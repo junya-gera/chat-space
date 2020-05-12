@@ -78,6 +78,12 @@ describe MessagesController do
       before do
         login user
       end
+      
+      # expectの記述が長くなる場合はsubjectで記述を切り出す
+      subject {
+        post :create,
+        params: params
+      }
 
       context '保存に成功した場合' do
       end
