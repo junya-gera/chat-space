@@ -70,11 +70,14 @@ describe MessagesController do
 
     # ここのparamsは、擬似的にcreateアクションにリクエストする際に引数として渡すもの
     # attributes_forはbuild同様FactoryBotによって定義されるメソッド。オブジェクトを生成せずハッシュを生成する
-    
+
     let {:params}{{group_id: group.id, user_id: user.id, message: attributes_for(:message)}}
 
 
     context 'ログインしている場合' do
+      before do
+        login user
+      end
 
       context '保存に成功した場合' do
       end
@@ -85,6 +88,8 @@ describe MessagesController do
     end
 
     context 'ログインしていない場合' do
+      before do
+        get :create, params: params
     end
 
   end
