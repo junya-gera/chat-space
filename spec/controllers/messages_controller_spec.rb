@@ -126,6 +126,11 @@ describe MessagesController do
       before do
         get :create, params: params
       end
+
+      it 'new.html.hamlに遷移すること' do
+        post :create, params: params
+        expect(response).to redirect_to(new_user_session_path)
+      end
     end
 
   end
