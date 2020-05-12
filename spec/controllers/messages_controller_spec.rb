@@ -1,6 +1,13 @@
 require 'rails_helper'
 
 describe MessagesController do
+      # 複数のexample内で同一のインスタンスを使用したい場合、letメソッドを使う
+    # letメソッドは初回の呼び出し時のみ実行される（遅延評価）。繰り返しがないので高速
+    # 
+    let(:group) { create(:group) }
+    let(:user) { create(:user) }
+
+
 
   describe '#index' do
     # メッセージ一覧でテストすべき点
@@ -9,12 +16,6 @@ describe MessagesController do
         # 該当するビューが描画されているか
       # ログインしていない場合
         # 意図したビューにリダイレクトしているか
-
-    # 複数のexample内で同一のインスタンスを使用したい場合、letメソッドを使う
-    # letメソッドは初回の呼び出し時のみ実行される（遅延評価）。繰り返しがないので高速
-    # 
-    let(:group) { create(:group) }
-    let(:user) { create(:user) }
 
     context 'ログインしている場合' do
       # beforeメソッドは、各exampleが実行される直前に、毎回実行される。ここに共通の処理をまとめておく
@@ -71,7 +72,7 @@ describe MessagesController do
     # ここのparamsは、擬似的にcreateアクションにリクエストする際に引数として渡すもの
     # attributes_forはbuild同様FactoryBotによって定義されるメソッド。オブジェクトを生成せずハッシュを生成する
 
-    let {:params}{{group_id: group.id, user_id: user.id, message: attributes_for(:message)}}
+    let (:params){{group_id: group.id, user_id: user.id, message: attributes_for(:message)}}
 
 
     context 'ログインしている場合' do
@@ -90,16 +91,33 @@ describe MessagesController do
         it 'messageを保存すること' do
         # changeマッチャは引数が変化したかどうか確かめる
         # Messageモデルのレコードが1個増えたかどうかを確かめる
-        expect(subject).to change(Message, :conut).by(1)
+        expect{subject}.to change(Message, :count).by(1)
         end
 
         it 'group_messages_pathへリダイレクトすること' do
+          subject
           expect(response).to redirect_to(group_messages_path(group))
         end
-
       end
 
       context '保存に失敗した場合' do
+
+        let(:invalid_params){{group_id: group.id, user_id: user.id, message: attributes_for(:message, content: nil, image: nil)}}
+        subject{
+          post :create,
+          params: invalid_params
+        }
+
+        it 'messageを保存しないこと' do
+          expect{subject}.not_to change(Message, :count)
+        end
+
+        it 'index.html.erbへ遷移すること' do
+          subject
+          expect(response).to render_template :index
+        end
+
+
       end
 
     end
@@ -107,6 +125,7 @@ describe MessagesController do
     context 'ログインしていない場合' do
       before do
         get :create, params: params
+      end
     end
 
   end
