@@ -86,6 +86,17 @@ describe MessagesController do
       }
 
       context '保存に成功した場合' do
+
+        it 'messageを保存すること' do
+        # changeマッチャは引数が変化したかどうか確かめる
+        # Messageモデルのレコードが1個増えたかどうかを確かめる
+        expect(subject).to change(Message, :conut).by(1)
+        end
+
+        it 'group_messages_pathへリダイレクトすること' do
+          expect(response).to redirect_to(group_messages_path(group))
+        end
+
       end
 
       context '保存に失敗した場合' do
