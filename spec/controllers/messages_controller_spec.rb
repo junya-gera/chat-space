@@ -67,6 +67,20 @@ describe MessagesController do
       # 意図したビューに遷移しているか
     # ログインしていない場合
       # 意図した画面にリダイレクトしているか
+
+    context 'ログインしている場合' do
+      
+      context '保存に成功した場合' do
+      end
+
+      context '保存に失敗した場合' do
+      end
+
+    end
+
+    context 'ログインしていない場合' do
+    end
+
   end
 
 end
