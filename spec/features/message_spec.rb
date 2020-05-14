@@ -1,6 +1,9 @@
 require 'rails_helper'
 
+# フィーチャースペックでの言葉の違い
+  # it: scenario, before: background, describe: feature, let: given
+
 feature 'message', type: :feature do
-# このブロックの内部にscenarioを記述していく
+  let{:user}{create(:user)}
 
 end
