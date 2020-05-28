@@ -1,7 +1,7 @@
 FROM ruby:2.5.1
 
-RUN apt-get update && apt-get install -y nodejs --no-install-recommends \
-    && rm -rf /var/lib/apt/lists/*
+# RUN apt-get update && apt-get install -y nodejs --no-install-recommends \
+#     && rm -rf /var/lib/apt/lists/*
 # nodejsのインストール
 # --no-install-recommends → デフォルトだとrecommendsしているだけの必須ではない
 # パッケージも一緒に入って時間がかかるのでこれをつける
@@ -11,8 +11,8 @@ RUN apt-get update && apt-get install -y nodejs --no-install-recommends \
 # rm -rf /var/lib/apt/lists/* → これらを削除してイメージのサイズを減らす
 # https://26gram.com/category/linux
 
-RUN apt-get update && apt-get install -y mysql-client --no-install-recommends \
-    && rm -rf /var/lib/apt/lists/*
+# RUN apt-get update && apt-get install -y mysql-client --no-install-recommends \
+#     && rm -rf /var/lib/apt/lists/*
 # mysqlのインストール
 
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
@@ -22,10 +22,12 @@ RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
 
 RUN mkdir /myapp
 # コンテナ内にmyappというディレクトリを作成
+
 WORKDIR /myapp
 # myappを作業ディレクトリに指定(myappディレクトリに移動)
-ADD Gemfile /myapp/Gemfile
-ADD Gemfile.lock /myapp/Gemfile.lock
+COPY Gemfile /myapp/Gemfile
+COPY Gemfile.lock /myapp/Gemfile.lock
+RUN gem install bundler
 RUN bundle install
 
 ADD . /myapp
