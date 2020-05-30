@@ -30,8 +30,8 @@ ENV RAILS_ROOT /myapp
 
 WORKDIR $RAILS_ROOT
 # myappを作業ディレクトリに指定(myappディレクトリに移動)
-COPY Gemfile Gemfile
-COPY Gemfile.lock Gemfile.lock
+COPY Gemfile $RAILS_ROOT/Gemfile
+COPY Gemfile.lock $RAILS_ROOT/Gemfile.lock
 # ホストのGemfileをRailsコンテナにコピー
 RUN gem install bundler
 RUN bundle install --jobs 20 --retry 5 --without production
